@@ -122,10 +122,6 @@ if [[ -z "$AREA_PATH" ]]; then
     exit 1
 fi
 
-# Save configuration for future reference
-CONFIG_DIR="$HOME/.speckit"
-CONFIG_FILE="$CONFIG_DIR/ado-config.json"
-
 # Escape backslashes for JSON
 AREA_PATH_ESCAPED="${AREA_PATH//\\/\\\\}"
 

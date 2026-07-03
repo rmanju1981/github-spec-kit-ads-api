@@ -434,9 +434,9 @@ if ($createdItems.Count -gt 0) {
     Write-Host ""
     
     foreach ($item in $createdItems) {
-        Write-Host "  [$($item.StoryNumber)] $($item.Title) ($($item.Priority))"
-        Write-Host "      Work Item: #$($item.WorkItemId)"
-        Write-Host "      Link: $($item.WorkItemUrl)"
+        Write-Host "  [$($item.storyNumber)] $($item.title) ($($item.priority))"
+        Write-Host "      Work Item: #$($item.workItemId)"
+        Write-Host "      Link: $($item.workItemUrl)"
         Write-Host ""
     }
     
@@ -451,22 +451,22 @@ if ($createdItems.Count -gt 0) {
         Write-Host ""
         
         foreach ($item in $createdItems) {
-            if ($item.ParentStoryNumber) {
+            if ($item.parentStoryNumber) {
                 # Extract story number from "US1" format
                 $storyNum = $null
-                if ($item.ParentStoryNumber -match 'US(\d+)') {
+                if ($item.parentStoryNumber -match 'US(\d+)') {
                     $storyNum = $Matches[1]
-                } elseif ($item.ParentStoryNumber -match '^\d+$') {
-                    $storyNum = $item.ParentStoryNumber
+                } elseif ($item.parentStoryNumber -match '^\d+$') {
+                    $storyNum = $item.parentStoryNumber
                 }
                 
                 if ($storyNum -and $parentMapping.ContainsKey($storyNum)) {
                     $parentId = $parentMapping[$storyNum]
-                    Write-Host "  Linking Task #$($item.WorkItemId) -> User Story #$parentId..." -NoNewline
+                    Write-Host "  Linking Task #$($item.workItemId) -> User Story #$parentId..." -NoNewline
                     
                     $linkArgs = @(
                         'boards', 'work-item', 'relation', 'add'
-                        '--id', $item.WorkItemId
+                        '--id', $item.workItemId
                         '--relation-type', 'Parent'
                         '--target-id', $parentId
                         '--organization', "https://dev.azure.com/$Organization"
