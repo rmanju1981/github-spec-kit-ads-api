@@ -256,9 +256,11 @@ if [[ "$FROM_TASKS" == true ]]; then
     if [[ -f "$MAPPING_FILE" ]]; then
         echo "Loading parent user story mappings..."
         while IFS= read -r line; do
-            story_num=$(echo "$line" | jq -r '.storyNumber')
-            work_item_id=$(echo "$line" | jq -r '.workItemId')
-            PARENT_MAPPING[$story_num]=$work_item_id
+            story_num=$(echo "$line" | jq -r '(.storyNumber // .StoryNumber // empty)')
+            work_item_id=$(echo "$line" | jq -r '(.workItemId // .WorkItemId // empty)')
+            if [[ -n "$story_num" && -n "$work_item_id" ]]; then
+                PARENT_MAPPING[$story_num]=$work_item_id
+            fi
         done < <(jq -c '.workItems[]' "$MAPPING_FILE")
         echo "Loaded ${#PARENT_MAPPING[@]} parent stories"
         echo ""
