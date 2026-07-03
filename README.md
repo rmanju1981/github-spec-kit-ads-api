@@ -1,5 +1,5 @@
 # Azure DevOps (REST API) Integration Extension
-Sync user stories and tasks from Spec Kit to Azure DevOps work items using OAuth authentication (no PAT tokens required).
+Sync user stories and tasks from Spec Kit to Azure DevOps work items using PAT (Personal Access Token)
 
 ## Features:
 - PAT (Personal Access Token) based access to Azure DevOPs.
