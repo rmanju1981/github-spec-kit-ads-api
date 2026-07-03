@@ -5,7 +5,7 @@ extension:
   name: "Azure DevOps Integration"
   version: "1.0.0"
   description: "Sync user stories and tasks to Azure DevOps work items using OAuth authentication"
-  author: "GitHub Spec Kit Team"
+  author: "rmanju1981"
   repository: "https://github.com/rmanju1981/github-spec-kit-ads-api"
   license: "MIT"
   homepage: "https://github.com/rmanju1981/github-spec-kit-ads-api"

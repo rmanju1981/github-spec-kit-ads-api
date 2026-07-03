@@ -396,13 +396,13 @@ foreach ($story in $selectedStories) {
             Write-Host ""
             
             $createdItems += [PSCustomObject]@{
-                StoryNumber = $story.Number
-                Title = $story.Title
-                Priority = "P$($story.Priority)"
-                WorkItemId = $workItemId
-                WorkItemUrl = $workItemUrl
-                ParentStoryNumber = if ($FromTasks) { $story.Story } else { $null }
-                Status = "Created"
+                storyNumber = $story.Number
+                title = $story.Title
+                priority = "P$($story.Priority)"
+                workItemId = $workItemId
+                workItemUrl = $workItemUrl
+                parentStoryNumber = if ($FromTasks) { $story.Story } else { $null }
+                status = "Created"
             }
         } else {
             Write-Host "  [FAIL] Failed to create work item"
