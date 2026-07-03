@@ -486,7 +486,7 @@ if [[ ${#CREATED_IDS[@]} -gt 0 ]]; then
         comma=""
         [[ $i -lt $((${#CREATED_IDS[@]} - 1)) ]] && comma=","
         echo "    {" >> "$MAPPING_FILE"
-        echo "      \"storyNumber\": ${SELECTED_STORIES[$i]}," >> "$MAPPING_FILE"
+        echo "      \"storyNumber\": \"${SELECTED_STORIES[$i]}\"," >> "$MAPPING_FILE"
         echo "      \"workItemId\": ${CREATED_IDS[$i]}," >> "$MAPPING_FILE"
         echo "      \"url\": \"${CREATED_URLS[$i]}\"" >> "$MAPPING_FILE"
         echo "    }$comma" >> "$MAPPING_FILE"
